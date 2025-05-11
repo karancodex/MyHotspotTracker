@@ -1,97 +1,101 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+React Native Hotspot Device Tracker App
 
-# Getting Started
+This is a React Native app designed to track devices connected to your mobile hotspot. It uses a native module to read the ARP table from Android and display connected devices, and provides a UI to manage hotspot detection and user prompts.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+🔧 Technologies Used
 
-## Step 1: Start Metro
+React Native (TypeScript)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Java (Native Module for Android)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Metro Bundler
 
-```sh
-# Using npm
+Android Gradle Build System
+
+ChatGPT (for Kotlin logic reference and explanation)
+
+🚀 Features
+
+Automatically fetch devices connected to your phone's Wi-Fi hotspot (using Android's ARP table)
+
+Displays IP, MAC address, and device name
+
+Shows a dialog when the hotspot is turned off and asks user to manually turn it on (due to OS-level limitations)
+
+Simple UI for checking devices and prompting actions
+
+🧭 How to Use This App
+
+✅ Please make sure you have completed the React Native Environment Setup before continuing.
+
+Step 1: Install dependencies and start Metro
+
+npm install
 npm start
 
-# OR using Yarn
-yarn start
-```
+Step 2: Run the app on Android
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
 npm run android
 
-# OR using Yarn
-yarn android
-```
+📲 App Usage Instructions
 
-### iOS
+Open the app
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+If your hotspot is already ON, the app will automatically fetch and display all connected Wi-Fi devices.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+If your hotspot is OFF, a dialog will appear:
 
-```sh
-bundle install
-```
+It will ask you to manually start your hotspot
 
-Then, and every time you update your native dependencies, run:
+Due to platform restrictions, React Native cannot automatically enable hotspot
 
-```sh
-bundle exec pod install
-```
+After starting hotspot manually, press "Refresh" to fetch the connected devices.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+If data is not fetched after refresh, close and reopen the app to fetch properly.
 
-```sh
-# Using npm
-npm run ios
+📝 Notes
 
-# OR using Yarn
-yarn ios
-```
+This app only works on Android due to platform limitations (no ARP table on iOS).
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Permissions required:
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+android.permission.ACCESS_WIFI_STATE
 
-## Step 3: Modify your app
+android.permission.INTERNET
 
-Now that you have successfully run the app, let's make changes!
+android.permission.ACCESS_NETWORK_STATE
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+🔔 Important
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Note: If the data is not fetched after pressing the refresh button, please close and reopen the app. The data will then be displayed correctly.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Learning Update: I used ChatGPT during this development process because I am not yet familiar with Kotlin. However, since Kotlin seems to be an important skill in your company, I have started learning it actively.
 
-## Congratulations! :tada:
+📦 Building APK (Android)
 
-You've successfully run and modified your React Native App. :partying_face:
+To generate a signed APK:
 
-### Now what?
+cd android
+./gradlew assembleRelease
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+APK file will be located at:
 
-# Troubleshooting
+android/app/build/outputs/apk/release/app-release.apk
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+For debug builds:
 
-# Learn More
+./gradlew assembleDebug
 
-To learn more about React Native, take a look at the following resources:
+🤝 Contribution
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+If you'd like to contribute or extend this app (e.g., integrate Firebase, use Kotlin Jetpack APIs, or add auto hotspot toggle via root access), feel free to fork and raise PRs!
+
+📚 Learn More
+
+React Native Docs
+
+Kotlin for Android
+
+Android Networking & ARP
+
+Made with ❤️ using React Native
